@@ -11,53 +11,36 @@ const slider = document.getElementById("slider");
 
 
 
-// colored boxes for showing strenth of the password
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    // const slider = document.getElementById('slider');
-    const boxes = document.querySelectorAll('.box');
-
-    function updateBoxColoring() {
-      const sliderValue = parseInt(slider.value);
-      let selectedCount = 0;
-
-      checkboxes.forEach((checkbox) => {
-        if (checkbox.checked) {
-          selectedCount++;
-        }
-      });
-
-      if (selectedCount === 0 || sliderValue < 4) {
-        boxes.forEach((box) => {
-          box.classList.remove('colored');
-        });
-      } else if (sliderValue >= 4 && sliderValue <= 8) {
-        boxes.forEach((box, index) => {
-          if (index < Math.min(selectedCount, 3)) {
-            box.classList.add('colored');
-          } else {
-            box.classList.remove('colored');
-          }
-        });
-      } else if (sliderValue > 8 && selectedCount >= 4) {
-        boxes.forEach((box) => {
-          box.classList.add('colored');
-        });
-      } else {
-        boxes.forEach((box, index) => {
-          if (index < Math.min(selectedCount, sliderValue - 4)) {
-            box.classList.add('colored');
-          } else {
-            box.classList.remove('colored');
-          }
-        });
-      }
-    }
-
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  // const slider = document.getElementById('slider');
+  const boxes = document.querySelectorAll('.box');
+  
+  function updateBoxColoring() {
+    let selectedCount = 0;
     checkboxes.forEach((checkbox) => {
-      checkbox.addEventListener('change', updateBoxColoring);
+      if (checkbox.checked) {
+        selectedCount++;
+      }
     });
-
-    slider.addEventListener('input', updateBoxColoring);
+  
+    const sliderValue = parseInt(slider.value);
+  
+    boxes.forEach((box, index) => {
+      if (selectedCount === 0 || sliderValue < 4) {
+        box.classList.remove('colored');
+      } else if (index < selectedCount) {
+        box.classList.add('colored');
+      } else {
+        box.classList.remove('colored');
+      }
+    });
+  }
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', updateBoxColoring);
+  });
+  
+  slider.addEventListener('input', updateBoxColoring);
 
 
 
@@ -114,10 +97,23 @@ function generatePassword() {
     }
     characterSet = characterSet1 + characterSet2 + characterSet3 + characterSet4;
 
-    for (var i = 0; i < passwordLength-selectedCount; i++) {
-      var randomIndex = Math.floor(Math.random() * characterSet.length);
-      password += characterSet.charAt(randomIndex);
+    if(passwordLength<4){
+      if(passwordLength<selectedCount){
+          return;
+      }else{
+        for (var i = 0; i < passwordLength-selectedCount; i++) {
+          var randomIndex = Math.floor(Math.random() * characterSet.length);
+          password += characterSet.charAt(randomIndex);
+        
+      }
+      }
     }
+    else if(passwordLength>=4){
+      for (var i = 0; i < passwordLength-selectedCount; i++) {
+        var randomIndex = Math.floor(Math.random() * characterSet.length);
+        password += characterSet.charAt(randomIndex);
+      
+    }}
 
     document.getElementById("output").textContent = password;
   }
@@ -148,42 +144,24 @@ function generatePassword() {
 
 
   
-var generateBtn = document.getElementById("generate");
+// var generateBtn = document.getElementById("generate");
 
-slider.addEventListener("input", function() {
-  var value = slider.value;
-  slidervalue.textContent = value;
+// slider.addEventListener("input", function() {
+//   var value = slider.value;
+//   slidervalue.textContent = value;
 
-  if (value < 4) {
-    alert("Minimum password length is 4 characters");
-    generateBtn.disabled = true;
+//   if (value < 4) {
+//     alert("Minimum password length is 4 characters");
+//     generateBtn.disabled = true;
    
-  } else {
-    generateBtn.disabled = false;
-  }
-});
+//   } else {
+//     generateBtn.disabled = false;
+//   }
+// });
 
-generateBtn.addEventListener("click", function() {
-  if (slider.value < 4) {
+// generateBtn.addEventListener("click", function() {
+//   if (slider.value < 4) {
     
-    return;
-  }
-});
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
+//     return;
+//   }
+// });
