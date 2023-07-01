@@ -69,10 +69,7 @@ function generatePassword() {
     var includeSymbols = document.getElementById("includeSymbols").checked;
     var passwordLength = document.getElementById("slider").value;
 
-    if (!includeUppercase.checked && !includeLowercase.checked && !includeNumbers.checked && !includeSymbols.checked) {
-        alert("Please select at least one checkbox");
-        return;
-      }
+   
     
 
 
