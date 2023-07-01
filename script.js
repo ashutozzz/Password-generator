@@ -69,26 +69,30 @@ function generatePassword() {
     var includeSymbols = document.getElementById("includeSymbols").checked;
     var passwordLength = document.getElementById("slider").value;
 
-  let selectedCount = 0;
+    // if (!includeUppercase.checked && !includeLowercase.checked && !includeNumbers.checked && !includeSymbols.checked) {
+    //   alert("Please select at least one checkbox");
+    //   return;
+    // }
+    let selectedCount = 0;
 
       checkboxes.forEach((checkbox) => {
         if (checkbox.checked) {
           selectedCount++;
         }
       });
-
    
     
 
 
-     var characterSet = "";
+    var characterSet = "";
     var characterSet1 = "";
     var characterSet2 = "";
     var characterSet3 = "";
     var characterSet4 = "";
     var password = "";
 
-   if (includeUppercase) {
+
+    if (includeUppercase) {
       characterSet1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       var randomIndex = Math.floor(Math.random() * characterSet1.length);
       password += characterSet1.charAt(randomIndex);
@@ -109,7 +113,7 @@ function generatePassword() {
       password += characterSet4.charAt(randomIndex);
     }
     characterSet = characterSet1 + characterSet2 + characterSet3 + characterSet4;
-  
+
     for (var i = 0; i < passwordLength-selectedCount; i++) {
       var randomIndex = Math.floor(Math.random() * characterSet.length);
       password += characterSet.charAt(randomIndex);
@@ -153,7 +157,7 @@ slider.addEventListener("input", function() {
   if (value < 4) {
     alert("Minimum password length is 4 characters");
     generateBtn.disabled = true;
-    
+   
   } else {
     generateBtn.disabled = false;
   }
