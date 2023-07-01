@@ -69,27 +69,48 @@ function generatePassword() {
     var includeSymbols = document.getElementById("includeSymbols").checked;
     var passwordLength = document.getElementById("slider").value;
 
+  let selectedCount = 0;
+
+      checkboxes.forEach((checkbox) => {
+        if (checkbox.checked) {
+          selectedCount++;
+        }
+      });
+
    
     
 
 
-    var characterSet = "";
+     var characterSet = "";
+    var characterSet1 = "";
+    var characterSet2 = "";
+    var characterSet3 = "";
+    var characterSet4 = "";
     var password = "";
 
-    if (includeUppercase) {
-      characterSet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   if (includeUppercase) {
+      characterSet1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      var randomIndex = Math.floor(Math.random() * characterSet1.length);
+      password += characterSet1.charAt(randomIndex);
     }
     if (includeLowercase) {
-      characterSet += "abcdefghijklmnopqrstuvwxyz";
+      characterSet2 = "abcdefghijklmnopqrstuvwxyz";
+      var randomIndex = Math.floor(Math.random() * characterSet2.length);
+      password += characterSet2.charAt(randomIndex);
     }
     if (includeNumbers) {
-      characterSet += "0123456789";
+      characterSet3 = "0123456789";
+      var randomIndex = Math.floor(Math.random() * characterSet3.length);
+      password += characterSet3.charAt(randomIndex);
     }
     if (includeSymbols) {
-      characterSet += "!@#$%^&*()";
+      characterSet4 = "!@#$%^&*()";
+      var randomIndex = Math.floor(Math.random() * characterSet4.length);
+      password += characterSet4.charAt(randomIndex);
     }
-
-    for (var i = 0; i < passwordLength; i++) {
+    characterSet = characterSet1 + characterSet2 + characterSet3 + characterSet4;
+  
+    for (var i = 0; i < passwordLength-selectedCount; i++) {
       var randomIndex = Math.floor(Math.random() * characterSet.length);
       password += characterSet.charAt(randomIndex);
     }
