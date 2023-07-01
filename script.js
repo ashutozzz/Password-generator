@@ -130,6 +130,7 @@ slider.addEventListener("input", function() {
   slidervalue.textContent = value;
 
   if (value < 4) {
+    alert("Minimum password length is 4 characters");
     generateBtn.disabled = true;
     
   } else {
@@ -139,7 +140,7 @@ slider.addEventListener("input", function() {
 
 generateBtn.addEventListener("click", function() {
   if (slider.value < 4) {
-    alert("Minimum password length is 4 characters");
+    
     return;
   }
 });
