@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <div class="container1">
+            <div id="output">P4$5W0rD!</div>
+            <button id="copy" onclick="copyToClipboard"></button>
+        </div>
+        <div class="container2">
+            <div id="charLength">Character Length</div>
+            
+             <input type="range" id="slider" class="myrange" min="0" max="12" value="0" step="1" oninput="progressScript()">
+             <span class="lenNum" id="slider-value">0</span>
+
+            <label class="script" >
+                Include Uppercase Letters
+                <input type="checkbox" id="includeUppercase">
+                <span class="geekmark"></span>
+            </label>
+            
+            <label class="script"  >
+                Include Lowercase Letters
+                <input type="checkbox" id="includeLowercase" >
+                <span class="geekmark"></span>
+            </label>
+
+                <label class="script"  >
+                    Include Numbers
+                    <input type="checkbox" id="includeNumbers">
+                    <span class="geekmark"></span>
+                </label>
+
+                <label class="script" >
+                    Include Symbols
+                    <input type="checkbox" id="includeSymbols">
+                    <span class="geekmark"></span>
+                </label>
+
+            
+            <div class="strength">
+                <div id="strtext">STRENGTH</div>
+                <div class="strbox">
+                    <div class="box" id="box1"></div>
+                    <div class="box" id="box2"></div>
+                    <div class="box" id="box3"></div>
+                    <div class="box" id="box4"></div>
+                 </div>
+              </div>
+
+        <button id="generate">GENERATE   ➝</button>
+        </div>
+    </div>
+   
+
+    <script src="script.js">
+        
+    </script>
+</body>
+</html>
