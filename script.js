@@ -113,6 +113,7 @@ function generatePassword() {
         var randomIndex = Math.floor(Math.random() * characterSet.length);
         password += characterSet.charAt(randomIndex);
       
+      
     }}
 
     document.getElementById("output").textContent = password;
